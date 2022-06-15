@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Meme Generator</title>
+</head>
+
+<body onload="init()">
+    <header class="main-header">
+        <div class="header flex align-center space-between main-layout margin-auto">
+            <h1 class="main-logo">Logo</h1>
+            <div class="main-nav flex nav-layout space-between">
+
+                <ul class="clean-list flex">
+                    <li><button onclick="setView(this.innerText)">Gallery</button></li>
+                    <li><button>About</button></li>
+                    <li><button>Memes</button></li>
+                </ul>
+
+            </div>
+        </div>
+    </header>
+
+
+
+    <main class="main-content ">
+        <div class="content main-layout margin-auto">
+            <div class="content-filtering flex space-between">
+                <input id="search-keywords" type="text" placeholder="Search">
+                <div class="keywords flex align-center">
+                    <span>Funny</span>
+                    <span>Animal</span>
+                    <span>Men</span>
+                    <span>Women</span>
+                    <span>Comic</span>
+                    <span>Smile</span>
+                </div>
+                <button class="more-keywords-btn">More</button>
+            </div>
+            <div class="main-gallery grid justify-center">
+
+            </div>
+            <div class="meme-board flex colum margin-auto justify-center main-layout">
+                <canvas id="canvas" height="800" width="800" style="border: 3px solid rgb(21, 22, 17);"
+                    class="my-canvas"></canvas>
+                <div class="control-panel flex column space-around">
+                    <input oninput="onSetLineText(this.value)" class="line-txt" type="text"
+                        placeholder="Enter Text Here">
+                    <div class="set-styles grid-apps">
+                        <input onchange="onSetTextColor(this.value)" class="set-color" type="color">
+                        <button onclick="onIncreaseFontSize()" class="increase">A+</button>
+                        <button onclick="onDecreaseFontSize()" class="decrease">A-</button>
+                        <button onclick="onSwitchLines()" class="switch-lines">🔃</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+
+    <footer class="main-footer"></footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="js/main.js"></script>
+    <script src="js/controllers/gallery-controller.js"></script>
+    <script src="js/controllers/meme-controller.js"></script>
+    <script src="js/services/gallery-service.js"></script>
+    <script src="js/services/meme-service.js"></script>
+    <script src="js/services/storage-service.js"></script>
+    <script src="js/services/utils-service.js"></script>
+</body>
+
+</html>
