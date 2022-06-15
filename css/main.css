@@ -20,6 +20,11 @@
 }
 
 @font-face {
+    font-family: poppins-semiBold;
+    src: url(../fonts/Poppins/Poppins-SemiBold.ttf);
+}
+
+@font-face {
     font-family: poppins-extraBold;
     src: url(../fonts/Poppins/Poppins-ExtraBold.ttf);
 }
@@ -104,13 +109,17 @@
 :root {
     --clr-BGC: linear-gradient(to bottom right, #F64F8B, #F88558);
     --clr-main: linear-gradient(to left, #33BE6D, #0C98B9);
+    --clr-addBtn: linear-gradient(to top left, #42EB5C, #37B34A);
+    --clr-switchBtn: linear-gradient(to top left, #66C4DC, #40B1CE, #0C98BB);
+    --clr-removeBtn: linear-gradient(to top left, #CF1D37, #F05036);
     --clr-white: #fff;
     --clr-HTxt: #21AC91;
     --clr-DGrey: #383B42;
     --clr-input: #22252C;
     --clr-LGrey: #707070;
     --clr-trans: hsla(218, 27%, 94%, 0.11);
-    --clr-stylesBG: #19A59F
+    --clr-stylesBG: #19A59F;
+    --clr-LWhite: #EBEEF3;
 }
 
 .grid {
@@ -171,7 +180,7 @@ body {
     font-family: poppins-light;
 }
 
-.main-content input {
+.main-content input.search-words {
     width: 540px;
     font-size: 1.3125rem;
     padding: 0.9rem 0;
@@ -183,7 +192,7 @@ body {
     border: 0;
 }
 
-.main-content button {
+.main-content button.more-keywords-btn {
     font-size: 1.125rem;
     background-image: var(--clr-main);
     border-radius: 2rem;
@@ -195,7 +204,7 @@ body {
     transition: all 0.4s;
 }
 
-.main-content button:hover {
+.main-content button.more-keywords-btn:hover {
     color: var(--clr-HTxt);
     background-image: var(--clr-white);
     cursor: pointer;
@@ -221,10 +230,7 @@ body {
     padding: 1.5625rem 0.81251rem 2.8125rem;
 }
 
-.meme-board input.set-color {
-    width: 100px;
-    height: 100px;
-}
+
 
 .meme-board {
     display: none;
@@ -235,22 +241,146 @@ body {
     margin-inline-start: 5.625rem;
     border-radius: 1rem;
     margin-bottom: 1.875rem;
+    padding: 0 2.5125rem;
+}
+
+.control-panel .line-txt {
+    padding: 6.5px 0;
+    border-radius: 2rem;
+    border: 0;
+    background-color: var(--clr-LWhite);
+    font-family: poppins-medium;
+    text-align: center;
+    margin-top: 1.5rem;
+    border-top: 5px solid var(--clr-white);
+    border-bottom: 5px solid var(--clr-LGrey);
+}
+
+.control-panel button {
+    font-family: poppins-semiBold;
+    font-size: 3.2rem;
+    height: 54.4px;
+    width: 54.4px;
+    border-radius: 1rem;
+    border: 0;
+    font-size: 2rem;
+
+}
+
+.control-panel .lines-btns>*:not(:last-child) {
+    margin-inline-end: 20px;
+}
+
+.control-panel .lines-btns {
+    margin-top: 19px;
+    margin-bottom: 28.4px;
+}
+
+.add-line {
+    background-image: var(--clr-addBtn);
+    color: var(--clr-white);
+}
+
+.switch-lines {
+    color: var(--clr-white);
+    font-family: poppins-extraBold;
+    background-image: var(--clr-switchBtn);
+}
+
+.remove-line {
+    background-image: var(--clr-removeBtn);
+    color: var(--clr-white);
+}
+
+.remove-line:hover,
+.switch-lines:hover,
+.add-line:hover {
+    cursor: pointer;
+    color: var(--clr-DGrey)
+}
+
+
+.control-panel .lines-btns button {
+    border-top: 4px solid var(--clr-white);
+    border-bottom: 4px solid var(--clr-LGrey);
 }
 
 .set-styles {
     background-color: var(--clr-stylesBG);
     border-radius: 1rem;
+    padding: 0.6875rem 1rem 1.1875rem 1.09375rem;
 }
-.set-styles button{
+
+.set-styles .set-font {
+    font-family: poppins-semiBold;
+    grid-column: span 3;
+    border-radius: 1rem;
+    border: 0;
+    font-size: 1.71rem;
+    text-align: center;
+}
+.set-styles .set-font:hover{
+    cursor: pointer;
+    color: var(--clr-HTxt);
+}
+
+.set-styles button {
     background-color: var(--clr-white);
+    font-size: 2rem;
+
 }
 
-.grid-apps{
+.set-styles button:hover {
+    color: var(--clr-HTxt);
+    cursor: pointer;
+}
+
+.set-styles input.set-color,
+input.set-stroke {
+    background-color: var(--clr-white);
+    opacity: 0;
+    height: 54.4px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%
+}
+
+.stroke-color-div,
+.txt-color-div {
+    position: relative;
+    display: inline-block;
+}
+
+.stroke-color-btn,
+.txt-color-btn {
+    text-decoration: underline;
+    z-index: 1;
+}
+
+.set-color:hover,
+.set-stroke:hover {
+    cursor: pointer;
+}
+
+.stroke-color-div:hover .stroke-color-btn,
+.txt-color-div:hover .txt-color-btn {
+    color: var(--clr-HTxt);
+}
+
+
+
+
+
+.grid-apps {
     display: grid;
-    grid-template-columns: repeat(5,1fr);
-    grid-template-rows: repeat(2,1fr);
+    column-gap: 2.1875rem;
+    row-gap: 1.20625rem;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
 
 }
+
 .my-canvas {
     outline: 5px solid var(--clr-trans);
     border-radius: 1.875rem;

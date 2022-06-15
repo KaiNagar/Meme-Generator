@@ -14,15 +14,13 @@ function renderMeme() {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
         for (var i = 0; i < meme.lines.length; i++) {
             var line = meme.lines[i]
+            gCtx.textAlign = line.align
             gCtx.font = `${line.size}px ${line.font}`
             gCtx.fillStyle = line.color
+            gCtx.strokeStyle = line.strokeColor
             gCtx.fillText(line.txt, 40, 60 * (i + 1))
+            gCtx.strokeText(line.txt, 40, 60 * (i + 1))
         }
-        // meme.lines.forEach(line => {
-        //     gCtx.font = `${line.size}px ${line.font}`
-        //     gCtx.fillStyle = line.color
-        //     gCtx.fillText(line.txt, 40*, 60*)
-        // })
     }
 }
 
@@ -37,15 +35,19 @@ function onImgSelect(id) {
 
 function onIncreaseFontSize() {
     increaseFontSize()
+    renderMeme()
 }
 function onDecreaseFontSize() {
     decreaseFontSize()
+    renderMeme()
 }
 function onSetLineText(txt) {
     setLineText(txt)
+    renderMeme()
 }
 function onSetTextColor(color) {
     setTextColor(color)
+    renderMeme()
 }
 
 function onSwitchLines() {
@@ -53,6 +55,22 @@ function onSwitchLines() {
     switchLines()
     if (gMeme.lines[gMeme.selectedLineIdx].txt === 'Enter text here') inputTxt.value = ''
     else inputTxt.value = gMeme.lines[gMeme.selectedLineIdx].txt
+    renderMeme()
+}
+
+function onSetStrokeColor(strokeColor){
+    setStrokeColor(strokeColor)
+    renderMeme()
+}
+
+function onSetAlign(align){
+    setAlign(align)
+    renderMeme()
+}
+
+function onSetFont(font){
+    setFont(font)
+    renderMeme()
 }
 
 

@@ -30,7 +30,7 @@
     <main class="main-content ">
         <div class="content main-layout margin-auto">
             <div class="content-filtering flex space-between">
-                <input id="search-keywords" type="text" placeholder="Search">
+                <input class="search-words" id="search-keywords" type="text" placeholder="Search">
                 <div class="keywords flex align-center">
                     <span>Funny</span>
                     <span>Animal</span>
@@ -47,15 +47,47 @@
             <div class="meme-board flex colum margin-auto justify-center main-layout">
                 <canvas id="canvas" height="800" width="800" style="border: 3px solid rgb(21, 22, 17);"
                     class="my-canvas"></canvas>
-                <div class="control-panel flex column space-around">
+                <div class="control-panel flex column">
                     <input oninput="onSetLineText(this.value)" class="line-txt" type="text"
                         placeholder="Enter Text Here">
+                    <div class="lines-btns flex justify-center">
+                        <button onclick="onSwitchLines()" class="switch-lines">&#8645;</button>
+                        <button class="add-line"><i class="fa-solid fa-plus"></i></button>
+                        <button class="remove-line"><i class="fas fa-trash bg-black"></i></button>
+                    </div>
                     <div class="set-styles grid-apps">
-                        <input onchange="onSetTextColor(this.value)" class="set-color" type="color">
                         <button onclick="onIncreaseFontSize()" class="increase">A+</button>
                         <button onclick="onDecreaseFontSize()" class="decrease">A-</button>
-                        <button onclick="onSwitchLines()" class="switch-lines">🔃</button>
+                        <button onclick="onSetAlign('left')"><i class="fas fa-align-left"></i></button>
+                        <button onclick="onSetAlign('center')"><i class="fas fa-align-center"></i></button>
+                        <button onclick="onSetAlign('right')"><i class="fas fa-align-right"></i></button>
+                        <select onchange="onSetFont(this.value)" class="set-font" name="" id="">
+                            <option value="David">David</option>
+                            <option value="poppins-light">Poppins Light</option>
+                            <option value="poppins-medium">Poppins Medium</option>
+                            <option value="poppins-regular">Poppins Regular</option>
+                            <option value="poppins-semiBold">Poppins Semi Bold</option>
+                            <option value="poppins-extraBold">Poppins Extra Bold</option>
+                        </select>
+                        <div class="stroke-color-div">
+                            <button class="stroke-color-btn">S</button>
+                            <input onchange="onSetStrokeColor(this.value)" id="stroke-color" class="set-stroke"
+                                type="color">
+                        </div>
+                        <div class="txt-color-div">
+                            <button class="txt-color-btn"><i class="fa-solid fa-palette"></i></button>
+                            <input onchange="onSetTextColor(this.value)" class="set-color" type="color">
+                        </div>
                     </div>
+                    <div class="stickers">
+                       
+                    </div>
+                    <a href="#" class="download" onclick="downloadCanvas(this)" download="my-img.jpg">Download as jpeg</a>
+                    <button class="btn" onclick="uploadImg()">
+                        Upload Image from Canvas
+                    </button>
+                    <p class="user-msg"></p>
+                    <div class="share-container"></div>
                 </div>
             </div>
         </div>
@@ -86,6 +118,7 @@
     <script src="js/services/meme-service.js"></script>
     <script src="js/services/storage-service.js"></script>
     <script src="js/services/utils-service.js"></script>
+    <script src="https://kit.fontawesome.com/2e17e04cef.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
