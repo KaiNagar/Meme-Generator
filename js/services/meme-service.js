@@ -5,6 +5,8 @@ var gSavedMemes
 var gFilteredImgs = []
 var gIsRNG = false
 
+var gUserImg
+
 const gTxts = []
 const gFonts = ['David', 'poppings-light', 'poppins-medium', 'poppins-regular', 'poppins-semiBold', 'poppins-extraBold']
 const gAligns = ['left', 'right', 'center']
@@ -53,7 +55,13 @@ var gMeme = {
 }
 
 function setImg(id) {
-    gMeme.selectedId = id
+    var meme = getMeme()
+    meme.selectedId = id
+}
+
+function setUserImg(id) {
+    var meme = getMeme()
+    meme.selectedId = id
 }
 function resetMeme() {
     gMeme = {
@@ -92,7 +100,7 @@ function getSavedMemes() {
     return gSavedMemes
 }
 
-function setGMemes(val) {
+function setGMeme(val) {
     gMeme = val
 }
 
@@ -151,8 +159,8 @@ function addSticker(sticker) {
         txt: sticker,
         size: 40,
         pos: { x: 275, y: 225 },
-        isDrag:false,
-        isSticker:true
+        isDrag: false,
+        isSticker: true
     }
     meme.lines.push(stickerLine)
 }
@@ -244,27 +252,64 @@ function setRngLine() {
     }
 }
 
-function downloadCanvas(elLink) {
+function onImgInput(ev) {
+    gIsUserImg = true
+    loadImageFromInput(ev, renderImg)
+}
+function loadImageFromInput(ev, onImageReady) {
+    var reader = new FileReader()
+    reader.onload = function (event) {
+        var url = event.target.result
+        var newImg = {
+            id: imgNextIdx++,
+            url: url
+        }
+        setGMeme(newImg.id)
+        setUserImg(newImg)
+        newImg.onload = onImageReady.bind(null, newImg)
+    }
+    reader.readAsDataURL(ev.target.files[0])
+}
+
+function setUserImg(img) {
+    gUserImg = img
+    renderMeme()
+}
+function getUserImg() {
+    return gUserImg
+}
+
+function renderImg(img) {
+    gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
+}
+
+
+function clearSelectedLine() {
     var meme = getMeme()
-    var currLine = meme.lines[meme.selectedLineIdx]
-    gCtx.beginPath()
-    gCtx.strokeStyle = 'green'
-    gCtx.rect(currLine.pos.x - 150, currLine.pos.y - 40, 300, currLine.size + 15)
-    gCtx.stroke()
+    var emptyLine = {
+        txt: '',
+        pos: { x: 0, y: 1000 },
+        isEmpty: true
+    }
+    meme.lines.push(emptyLine)
+    meme.selectedLineIdx = (meme.lines.length) - 1
+}
+
+function downloadCanvas(elLink) {
+    clearSelectedLine()
+    renderMeme()
 
     const data = gCanvas.toDataURL()
     elLink.href = data
     elLink.download = 'Your Canvas'
 }
-
 function uploadImg(elLink) {
-    // if (elLink.innerText === '&nbsp;&nbsp;&nbsp;Upload') elLink.innerText === 'Share' 
-
+    elLink.innerText = 'Uploading...'
     const imgDataUrl = gCanvas.toDataURL("image/jpeg")
 
     function onSuccess(uploadedImgUrl) {
         const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
-        elLink.href = `https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}`
+        window.location.href =  `https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}`
     }
     doUploadImg(imgDataUrl, onSuccess)
 }
@@ -310,6 +355,7 @@ function isLineClicked(pos) {
 
 function setLineDrag(isDrag) {
     var meme = getMeme()
+    if (meme.lines[meme.selectedLineIdx].isEmpty) return
     meme.lines[meme.selectedLineIdx].isDrag = isDrag
 }
 

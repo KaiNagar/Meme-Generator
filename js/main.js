@@ -5,7 +5,6 @@ var gCanvas
 var gCtx
 
 var gStartPos
-
 var gGallery
 
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
@@ -18,6 +17,7 @@ function init() {
     renderGallery()
     getMeme()
     setSavedMemes()
+
 }
 
 function setView(pageName) {
@@ -46,10 +46,9 @@ function addListeners() {
     addMouseListeners()
     addTouchListeners()
     //Listen for resize ev 
-    // window.addEventListener('resize', () => {
-    //     resizeCanvas()
-    //     renderCanvas()
-    // })
+    window.addEventListener('click', () => {
+
+    })
 }
 
 
@@ -65,13 +64,14 @@ function addTouchListeners() {
     gCanvas.addEventListener('touchstart', onDown)
     gCanvas.addEventListener('touchend', onUp)
 }
-
+var hasInput = true
 function onDown(ev) {
     const pos = getEvPos(ev)
-    var meme = getMeme()
+    // var meme = getMeme()
     if (!isLineClicked(pos)) {
         return
     }
+    // addInput(pos.x, pos.y)
     setLineDrag(true)
     gStartPos = pos
     document.body.style.cursor = 'grabbing'
@@ -107,4 +107,48 @@ function getEvPos(ev) {
         }
     }
     return pos
+}
+
+
+
+
+
+
+
+//inline text change
+
+function addInput(x, y) {
+    var meme = getMeme()
+    var currLine = meme.lines[meme.selectedLineIdx]
+    var input = document.createElement('input');
+
+    input.type = 'text';
+    if(currLine.txt !=='Enter text here' )input.value = currLine.txt
+    input.style.position = 'fixed';
+    input.style.left = currLine.pos.x + 'px';
+    input.style.top = currLine.pos.x + 'px';
+
+    input.onkeydown = handleEnter;
+
+    document.body.appendChild(input);
+
+    input.focus();
+
+    hasInput = true;
+}
+function handleEnter(e) {
+    var keyCode = e.keyCode;
+    if (keyCode === 13) {
+        drawText(this.value, parseInt(this.style.left, 10), parseInt(this.style.top, 10));
+        document.body.removeChild(this);
+        hasInput = false;
+    }
+}
+function drawText(txt, x, y) {
+    var meme = getMeme()
+    var currLine = meme.lines[meme.selectedLineIdx]
+    gCtx.textBaseline = 'top';
+    gCtx.textAlign = 'left';
+    gCtx.font = currLine.font;
+    gCtx.fillText(txt, currLine.pos.x, currLine.pos.y);
 }
