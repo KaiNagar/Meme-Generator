@@ -15,12 +15,12 @@ function renderMeme() {
 
     var memeImg = gImgs.find(img => img.id === meme.selectedId)
 
-//creating new img html and drawing it onto the canvas
+    //creating new img html and drawing it onto the canvas
     var img = new Image()
     img.src = memeImg.url
     img.onload = function () {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
-        
+
         for (var i = 0; i < meme.lines.length; i++) {
 
             //setting some line settings for next step
@@ -29,7 +29,7 @@ function renderMeme() {
             gCtx.font = `${line.size}px ${line.font}`
             gCtx.fillStyle = line.color
             gCtx.strokeStyle = line.strokeColor
-            
+
 
             gCtx.beginPath()
 
@@ -154,9 +154,10 @@ function onSetFilterBy(el) {
     if (el.localName === 'span') {
         value = el.innerText.charAt(0).toLowerCase() + el.innerText.slice(1)
         var size = el.style.fontSize
-        size = size.split('px')[0]
-        size++
-        el.style.fontSize = size + 'px'
+        size = +size.split('rem')[0]
+        size += 0.2
+        console.log(size);
+        el.style.fontSize = size + 'rem'
     }
     else value = el
     setFilterBy(value)
@@ -200,4 +201,50 @@ function onAddSticker(sticker) {
     renderMeme()
 }
 
+//showing more keywords
+function onMoreKeywords(word) {
+    const elWords = document.querySelector('.words-filtering')
+    if (word === 'More') {
+        elWords.classList.add('column')
+        elWords.innerHTML =
+            `<button onclick="onMoreKeywords(this.innerText)" class="more-keywords-btn">Less</button>
+            <div class="keywords flex align-center" style="border-bottom-left-radius:0 ;
+            border-bottom-right-radius:0 ;">
+                <span onclick="onSetFilterBy(this)" style="font-size:1.5625rem;">Funny</span>
+                <span onclick="onSetFilterBy(this)" style="font-size:0.8125rem;">Cat</span>
+                <span onclick="onSetFilterBy(this)" style="font-size:1.25rem;">Men</span>
+                <span onclick="onSetFilterBy(this)" style="font-size:1.5625rem;">Dog</span>
+                <span onclick="onSetFilterBy(this)" style="font-size:0.9375rem;">Comic</span>
+                <span onclick="onSetFilterBy(this)" style="font-size:2.1875rem;">Cute</span>
+            </div>
+            <div class="keywords flex align-center" style="border-radius:0;   ">
+        <span onclick="onSetFilterBy(this)" style="font-size:1.5625rem;">Funny</span>
+        <span onclick="onSetFilterBy(this)" style="font-size:0.8125rem;">Cat</span>
+        <span onclick="onSetFilterBy(this)" style="font-size:1.25rem;">Men</span>
+        <span onclick="onSetFilterBy(this)" style="font-size:1.5625rem;">Dog</span>
+        <span onclick="onSetFilterBy(this)" style="font-size:0.9375rem;">Comic</span>
+        <span onclick="onSetFilterBy(this)" style="font-size:2.1875rem;">Cute</span>
+    </div>
+    <div class="keywords flex align-center" style="border-top-left-radius:0 ;
+    border-top-right-radius:0 ;">
+    <span onclick="onSetFilterBy(this)" style="font-size:1.5625rem;">Funny</span>
+    <span onclick="onSetFilterBy(this)" style="font-size:0.8125rem;">Cat</span>
+    <span onclick="onSetFilterBy(this)" style="font-size:1.25rem;">Men</span>
+    <span onclick="onSetFilterBy(this)" style="font-size:1.5625rem;">Dog</span>
+    <span onclick="onSetFilterBy(this)" style="font-size:0.9375rem;">Comic</span>
+    <span onclick="onSetFilterBy(this)" style="font-size:2.1875rem;">Cute</span>
+    </div>`
+    } else {
+        elWords.classList.remove('column')
+        elWords.innerHTML = `<button onclick="onMoreKeywords(this.innerText)" class="more-keywords-btn">More</button>
+        <div class="keywords flex align-center">
+            <span onclick="onSetFilterBy(this)" style="font-size:1.5625rem;">Funny</span>
+            <span onclick="onSetFilterBy(this)" style="font-size:0.8125rem;">Cat</span>
+            <span onclick="onSetFilterBy(this)" style="font-size:1.25rem;">Men</span>
+            <span onclick="onSetFilterBy(this)" style="font-size:1.5625rem;">Dog</span>
+            <span onclick="onSetFilterBy(this)" style="font-size:0.9375rem;">Comic</span>
+            <span onclick="onSetFilterBy(this)" style="font-size:2.1875rem;">Cute</span>
+        </div>`
+    }
+}
 

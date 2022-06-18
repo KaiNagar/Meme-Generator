@@ -6,7 +6,6 @@ html {
     width: 100%;
 }
 
-
 .grid {
     display: grid;
     width: 100%;
@@ -30,5 +29,9 @@ body {
     outline: 5px solid var(--clr-trans);
     border-radius: 1.875rem;
     margin-bottom: 1.875rem;
+}
+
+.logo{
+    width: 114px;
 }
 

@@ -9,6 +9,16 @@ var gGallery
 
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
+
+
+
+//welcome to my code
+//very messy i know sorry about it
+//there are many function that are disabled as i didnt manage to make them fully work
+//thank you for the CR and enjoy :) ihope...
+
+
+//onload setting everything for the user
 function init() {
     gCanvas = document.getElementById('canvas');
     gCtx = gCanvas.getContext('2d');
@@ -20,6 +30,8 @@ function init() {
 
 }
 
+
+//when clicking the header btns changing the view to what ever he/she clicks on
 function setView(pageName) {
     const elBody = document.querySelector('.body')
     const elSearch = document.querySelector('.content-filtering')
@@ -42,6 +54,8 @@ function setView(pageName) {
     }
 }
 
+
+//some even listeners
 function addListeners() {
     addMouseListeners()
     addTouchListeners()
@@ -52,19 +66,25 @@ function addListeners() {
 }
 
 
-
+//some more even listeners
 function addMouseListeners() {
     gCanvas.addEventListener('mousemove', onMove)
     gCanvas.addEventListener('mousedown', onDown)
     gCanvas.addEventListener('mouseup', onUp)
 }
 
+//last of the even listener
 function addTouchListeners() {
     gCanvas.addEventListener('touchmove', onMove)
     gCanvas.addEventListener('touchstart', onDown)
     gCanvas.addEventListener('touchend', onUp)
 }
+
+//was going to do the inline text change with it
+//didnt manage to :(
 var hasInput = true
+
+//when click
 function onDown(ev) {
     const pos = getEvPos(ev)
     // var meme = getMeme()
@@ -76,6 +96,8 @@ function onDown(ev) {
     gStartPos = pos
     document.body.style.cursor = 'grabbing'
 }
+
+//when hold
 function onMove(ev) {
     const meme = getMeme()
     if (meme.lines[meme.selectedLineIdx].isDrag) {
@@ -88,11 +110,14 @@ function onMove(ev) {
     }
 
 }
+
+//when release
 function onUp() {
     setLineDrag(false)
     document.body.style.cursor = 'grab'
 }
 
+//getting clicked pos/moving pos
 function getEvPos(ev) {
     var pos = {
         x: ev.offsetX,
@@ -110,13 +135,8 @@ function getEvPos(ev) {
 }
 
 
-
-
-
-
-
 //inline text change
-
+//disabled
 function addInput(x, y) {
     var meme = getMeme()
     var currLine = meme.lines[meme.selectedLineIdx]
@@ -136,6 +156,8 @@ function addInput(x, y) {
 
     hasInput = true;
 }
+
+//some more inline disabled
 function handleEnter(e) {
     var keyCode = e.keyCode;
     if (keyCode === 13) {
@@ -144,6 +166,8 @@ function handleEnter(e) {
         hasInput = false;
     }
 }
+
+//some more inline disabled
 function drawText(txt, x, y) {
     var meme = getMeme()
     var currLine = meme.lines[meme.selectedLineIdx]

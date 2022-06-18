@@ -53,16 +53,18 @@ var gMeme = {
         isDrag: false,
     }]
 }
-
+//setting current image
 function setImg(id) {
     var meme = getMeme()
     meme.selectedId = id
 }
-
+//using when user using an image dowsnt work right now
 function setUserImg(id) {
     var meme = getMeme()
     meme.selectedId = id
 }
+
+//reseting meme to default values
 function resetMeme() {
     gMeme = {
         selectedId: 1,
@@ -92,52 +94,61 @@ function resetMeme() {
     }
 }
 
+//getting gmeme
 function getMeme() {
     return gMeme
 }
-
+//getting saved memes
 function getSavedMemes() {
     return gSavedMemes
 }
 
+// setting gmeme
 function setGMeme(val) {
     gMeme = val
 }
 
+// setting saved memes
 function setSavedMemes() {
     gSavedMemes = _LoadMemeFromStorage()
     if (!gSavedMemes || gSavedMemes.length === 0) gSavedMemes = []
 }
 
+//setting line text
 function setLineText(txt) {
     var meme = getMeme()
     meme.lines[meme.selectedLineIdx].txt = txt
 
 }
 
+// setting text color
 function setTextColor(color) {
     var meme = getMeme()
     meme.lines[meme.selectedLineIdx].color = color
 
 }
-
+//increase font
 function increaseFontSize() {
     var meme = getMeme()
     meme.lines[meme.selectedLineIdx].size++
 
 }
+
+//decreas font
 function decreaseFontSize() {
     var meme = getMeme()
     meme.lines[meme.selectedLineIdx].size--
 
 }
 
+//switch lines
 function switchLines() {
     var meme = getMeme()
     meme.selectedLineIdx++
     if (meme.selectedLineIdx > meme.lines.length - 1) meme.selectedLineIdx = 0
 }
 
+//addline with default values
 function addLine() {
     var meme = getMeme()
     var newLine = {
@@ -153,6 +164,8 @@ function addLine() {
     }
     meme.lines.push(newLine)
 }
+
+//add sticker
 function addSticker(sticker) {
     var meme = getMeme()
     var stickerLine = {
@@ -165,12 +178,14 @@ function addSticker(sticker) {
     meme.lines.push(stickerLine)
 }
 
+//remove line
 function removeLine() {
     var meme = getMeme()
     var lineIdx = meme.selectedLineIdx
     meme.lines.splice(lineIdx, 1)
 }
 
+//move line up ad down doesnt work right now
 function moveLine(direction) {
     var meme = getMeme()
     switch (direction) {
@@ -183,34 +198,44 @@ function moveLine(direction) {
     }
 }
 
+//setting stroke color
 function setStrokeColor(strokeColor) {
     var meme = getMeme()
     meme.lines[meme.selectedLineIdx].strokeColor = strokeColor
 }
 
+//setting align side
 function setAlign(align) {
     var meme = getMeme()
     meme.lines[meme.selectedLineIdx].align = align
 }
 
+//setting font style
 function setFont(font) {
     var meme = getMeme()
     meme.lines[meme.selectedLineIdx].font = font
 }
 
+
+//saving gmeme to storage
 function _saveMemeToStorage() {
     saveToStorage(STORAGE_KEY, gSavedMemes)
 }
+
+//getting gmeme from storage
 function _LoadMemeFromStorage() {
     return loadFromStorage(STORAGE_KEY)
 }
 
+//saving current meme to saved meme in storage
 function saveMeme() {
     gMeme.isSaved = true
     gSavedMemes.push(gMeme)
     _saveMemeToStorage()
 }
 
+
+//setting all memes by the filter and ready for render
 function setFilterBy(value) {
     gFilteredImgs = []
     var imgs = getGImgs()
@@ -225,6 +250,8 @@ function setFilterBy(value) {
     renderMemesByFilter()
 }
 
+
+//creating a random meme
 function makeRngMeme() {
     var imgs = getGImgs()
     var meme = {
@@ -238,6 +265,7 @@ function makeRngMeme() {
     return meme
 }
 
+//creating a random style line
 function setRngLine() {
     return {
         txt: gMemesSentences[getRandomIntInclusive(0, gMemesSentences.length - 1)],
@@ -252,10 +280,14 @@ function setRngLine() {
     }
 }
 
+
+//when user upload a photo to canvas doesnt work right now
 function onImgInput(ev) {
     gIsUserImg = true
     loadImageFromInput(ev, renderImg)
 }
+
+//user image thingy
 function loadImageFromInput(ev, onImageReady) {
     var reader = new FileReader()
     reader.onload = function (event) {
@@ -270,20 +302,21 @@ function loadImageFromInput(ev, onImageReady) {
     }
     reader.readAsDataURL(ev.target.files[0])
 }
-
+//uer ia=mage thigny
 function setUserImg(img) {
     gUserImg = img
     renderMeme()
 }
+//user image thingy
 function getUserImg() {
     return gUserImg
 }
-
+//user image thingy
 function renderImg(img) {
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
 }
 
-
+//clearing the line selected box
 function clearSelectedLine() {
     var meme = getMeme()
     var emptyLine = {
@@ -295,6 +328,7 @@ function clearSelectedLine() {
     meme.selectedLineIdx = (meme.lines.length) - 1
 }
 
+//downloading canvas
 function downloadCanvas(elLink) {
     clearSelectedLine()
     renderMeme()
@@ -303,6 +337,9 @@ function downloadCanvas(elLink) {
     elLink.href = data
     elLink.download = 'Your Canvas'
 }
+
+//uploading canvas to facebook
+//or sending it where ever on mobile whats app gmail or stuff like that
 function uploadImg(elLink) {
     elLink.innerText = 'Uploading...'
     const imgDataUrl = gCanvas.toDataURL("image/jpeg")
@@ -314,6 +351,7 @@ function uploadImg(elLink) {
     doUploadImg(imgDataUrl, onSuccess)
 }
 
+// uploading thingy
 function doUploadImg(imgDataUrl, onSuccess) {
     const formData = new FormData()
     formData.append('img', imgDataUrl)
@@ -331,7 +369,8 @@ function doUploadImg(imgDataUrl, onSuccess) {
         })
 }
 
-
+//checing if clicking a line
+//this part is messy and hard coded as i learned about measure text function only after i was too deep into the code
 function isLineClicked(pos) {
     const elInput = document.querySelector('.line-txt')
     var meme = getMeme()
@@ -353,12 +392,15 @@ function isLineClicked(pos) {
     return false
 }
 
+
+//setting line is being draged
 function setLineDrag(isDrag) {
     var meme = getMeme()
     if (meme.lines[meme.selectedLineIdx].isEmpty) return
     meme.lines[meme.selectedLineIdx].isDrag = isDrag
 }
 
+//dragin the line
 function moveLine(x, y) {
     var meme = getMeme()
     meme.lines[meme.selectedLineIdx].pos.x += x

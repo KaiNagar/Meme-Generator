@@ -15,13 +15,13 @@
 
     <header class="main-header">
         <div class="header flex align-center space-between main-layout margin-auto">
-            <h1 class="main-logo">LOGO</h1>
+            <h1 class="main-logo"><img class="logo" src="photos/LOGO.png" alt=""></h1>
             <div class="main-nav flex nav-layout space-between">
 
                 <ul class="clean-list flex">
                     <li><button onclick="setView(this.innerText)">Gallery</button></li>
-                    <li><button>About</button></li>
                     <li><button onclick="setView(this.innerText)">Memes</button></li>
+                    <li><button>About</button></li>
                 </ul>
                 <button onclick="toggleMenu()" class="menu-toggle">☰</button>
             </div>
@@ -47,7 +47,8 @@
                 <input oninput="onSetFilterBy(this.value)" class="search-words" id="search-keywords"
                     list="search-keywords" type="text" placeholder="Search">
                     <!-- <button onclick="onMakeRngMeme()" class="more-keywords-btn margin-auto">I'm Flexible</button> -->
-                <div class="words-filtering flex">
+                <div class="words-filtering flex ">
+                    <button onclick="onMoreKeywords(this.innerText)" class="more-keywords-btn">More</button>
                     <div class="keywords flex align-center">
                         <span onclick="onSetFilterBy(this)" style="font-size:1.5625rem;">Funny</span>
                         <span onclick="onSetFilterBy(this)" style="font-size:0.8125rem;">Cat</span>
@@ -56,7 +57,7 @@
                         <span onclick="onSetFilterBy(this)" style="font-size:0.9375rem;">Comic</span>
                         <span onclick="onSetFilterBy(this)" style="font-size:2.1875rem;">Cute</span>
                     </div>
-                    <button class="more-keywords-btn">More</button>
+                    
                 </div>
 
             </div>
