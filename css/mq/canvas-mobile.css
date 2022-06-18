@@ -1,0 +1,12 @@
+@media (max-width:1200px) {
+    .meme-board.flex {
+        flex-direction: column;
+    }
+
+    .control-panel.flex {
+        margin: auto;
+    }
+    .meme-board {
+        display: none;
+    }
+}

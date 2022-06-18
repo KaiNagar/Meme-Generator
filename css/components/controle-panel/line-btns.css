@@ -1,0 +1,67 @@
+.control-panel button {
+    font-family: poppins-semiBold;
+    font-size: 3.2rem;
+    height: 50px;
+    width: 54.37px;
+    border-radius: 0.8rem;
+    border: 0;
+    font-size: 2rem;
+
+}
+
+.control-panel .lines-btns>*:not(:last-child) {
+    margin-inline-end: 20px;
+}
+
+.control-panel .lines-btns {
+    margin-top: 19px;
+    margin-bottom: 28.4px;
+}
+
+.add-line {
+    background-image: var(--clr-addBtn);
+    color: var(--clr-white);
+    box-shadow: 0.26px 4.99px var(--clr-addShadow), inset 0 5px var(--clr-whiteLow);
+}
+
+.add-line:hover {
+    box-shadow: inset 0.26px 4.99px var(--clr-addShadow), 0 5px var(--clr-whiteLow);
+}
+
+.switch-lines {
+    color: var(--clr-white);
+    font-family: poppins-extraBold;
+    background-image: var(--clr-switchBtn);
+    box-shadow: 0.26px 4.99px var(--clr-shareShadow), inset 0 5px var(--clr-whiteLow);
+}
+
+.switch-lines:hover {
+    box-shadow: inset 0.26px 4.99px var(--clr-shareShadow), 0 5px var(--clr-whiteLow);
+}
+
+.remove-line {
+    background-image: var(--clr-removeBtn);
+    color: var(--clr-white);
+    box-shadow: 0.26px 4.99px var(--clr-removeShadow), inset 0 5px var(--clr-whiteLow);
+}
+
+.remove-line:hover {
+    box-shadow: inset 0.26px 4.99px var(--clr-removeShadow), 0 5px var(--clr-whiteLow);
+}
+
+.save-meme {
+    background-color: var(--clr-save);
+    box-shadow: 0.26px 4.99px var(--clr-saveShadow), inset 0 5px var(--clr-whiteLow);
+}
+
+.save-meme:hover {
+    box-shadow: inset 0.26px 4.99px var(--clr-saveShadow), 0 5px var(--clr-whiteLow);
+}
+
+.remove-line:hover,
+.switch-lines:hover,
+.add-line:hover,
+.save-meme {
+    cursor: pointer;
+    color: var(--clr-DGrey)
+}

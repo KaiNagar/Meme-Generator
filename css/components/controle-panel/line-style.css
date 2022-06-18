@@ -1,0 +1,76 @@
+.grid-apps {
+    display: grid;
+    column-gap: 2.1875rem;
+    row-gap: 1.20625rem;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+
+}
+.set-styles {
+    background-color: var(--clr-stylesBG);
+    border-radius: 1rem;
+    padding: 0.6875rem 1rem 1.1875rem 1.09375rem;
+}
+
+.set-styles .set-font {
+    font-family: poppins-semiBold;
+    grid-column: span 3;
+    border-radius: 1rem;
+    border: 0;
+    font-size: 1.71rem;
+    text-align: center;
+    box-shadow: 0.26px 4.99px var(--clr-btnShadow), inset 0 5px var(--clr-whiteLow);
+}
+
+.set-styles .set-font:hover {
+    box-shadow: inset 0.26px 4.99px var(--clr-btnShadow), 0 5px var(--clr-whiteLow);
+    cursor: pointer;
+    color: var(--clr-HTxt);
+}
+
+.set-styles button {
+    background-color: var(--clr-white);
+    font-size: 2rem;
+    box-shadow: 0.26px 4.99px var(--clr-btnShadow), inset 0 5px var(--clr-whiteLow);
+}
+
+.set-styles button:hover {
+    color: var(--clr-HTxt);
+    cursor: pointer;
+    box-shadow: inset 0.26px 4.99px var(--clr-btnShadow), 0 5px var(--clr-whiteLow);
+
+}
+
+.set-styles input.set-color,
+input.set-stroke {
+    background-color: var(--clr-white);
+    opacity: 0;
+    height: 54.4px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%
+}
+
+.stroke-color-div,
+.txt-color-div {
+    position: relative;
+    display: inline-block;
+}
+
+.stroke-color-btn,
+.txt-color-btn {
+    text-decoration: underline;
+    z-index: 1;
+}
+
+.set-color:hover,
+.set-stroke:hover {
+    cursor: pointer;
+}
+
+.stroke-color-div:hover .stroke-color-btn,
+.txt-color-div:hover .txt-color-btn {
+    color: var(--clr-HTxt);
+    box-shadow: inset 0.26px 4.99px var(--clr-btnShadow), 0 5px var(--clr-whiteLow);
+}

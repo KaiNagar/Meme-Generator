@@ -1,0 +1,34 @@
+.files-btns {
+    margin-top: 1.675rem;
+}
+
+a.download,
+a.share {
+    text-decoration: none;
+    color: var(--clr-white);
+    font-family: poppins-medium;
+    font-size: 1.3125rem;
+    border-radius: 1rem;
+}
+
+a.download {
+    padding: 0.53125rem 1.96875rem;
+    background-color: var(--clr-download);
+    box-shadow: 0.31px 5.99px var(--clr-downShadow), inset 0 5px var(--clr-white);
+}
+
+a.download:hover {
+    color: var(--clr-HTxt);
+    box-shadow: inset 0.31px 5.99px var(--clr-downShadow), 0 5px var(--clr-white);
+}
+
+a.share {
+    padding: 0.546875rem 3.46875rem;
+    background-color: var(--clr-share);
+    box-shadow: 0.31px 5.99px var(--clr-shareShadow), inset 0 5px var(--clr-white);
+}
+
+a.share:hover {
+    color: var(--clr-HTxt);
+    box-shadow: inset 0.31px 5.99px var(--clr-shareShadow), 0 5px var(--clr-white);
+}

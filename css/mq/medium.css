@@ -1,0 +1,20 @@
+@media(min-width:1450px) {
+    .grid {
+        grid-template-columns: repeat(4, 300px);
+
+    }
+
+    .main-nav ul:last-child {
+        margin-inline-end: 3.9375rem;
+    }
+
+    .main-layout {
+        max-width: 1400px;
+    }
+
+    .words-filtering {
+        width: 700px;
+    }
+
+
+}

@@ -1,0 +1,30 @@
+:root {
+    --clr-BGC: linear-gradient(to bottom right, #F64F8B, #F88558);
+    --clr-main: linear-gradient(to left, #33BE6D, #0C98B9);
+    --clr-addBtn: linear-gradient(to top left, #42EB5C, #37B34A);
+    --clr-addShadow: #015D33;
+    --clr-switchBtn: linear-gradient(to top left, #66C4DC, #40B1CE, #0C98BB);
+    --clr-switchShadow: #048B97;
+    --clr-removeBtn: linear-gradient(to top left, #CF1D37, #F05036);
+    --clr-removeShadow: #8C0606;
+    --clr-white: #fff;
+    --clr-whiteLow: hsla(0, 0%, 100%, 0.55);
+    --clr-black: #000000;
+    --clr-HTxt: #21AC91;
+    --clr-DGrey: #383B42;
+    --clr-input: #22252C;
+    --clr-LGrey: #707070;
+    --clr-trans: hsla(218, 27%, 94%, 0.11);
+    --clr-stylesBG: #19A59F;
+    --clr-LWhite: #EBEEF3;
+    --clr-inputShadow: #BBC4D1;
+    --clr-download: #8F44BB;
+    --clr-downShadow: #632687;
+    --clr-share: #1E7CD3;
+    --clr-shareShadow: #165C9C;
+    --clr-save: #ebeb4c;
+    --clr-saveShadow: #a3a34a;
+    --clr-stickers: linear-gradient(to top left, #8076FD, #A08BFF);
+    --clr-btnShadow: #5c5c5c8c;
+}
+

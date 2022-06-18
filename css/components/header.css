@@ -1,0 +1,29 @@
+.main-header {
+    background-image: var(--clr-main);
+    border-radius: 3rem;
+    font-family: poppins-medium;
+    margin-top: 1rem;
+}
+
+.main-header .main-logo {
+    font-size: 1.375rem;
+    margin-inline-start: 5.4375rem;
+    padding: 0.34375rem 0;
+}
+
+.main-header button {
+    font-size: 1.3125rem;
+    margin-inline-start: 3.9375rem;
+    padding: 0.125rem 1.3125rem;
+    border-radius: 2rem;
+    background-color: transparent;
+    border: transparent;
+    color: var(--clr-white);
+    transition: all 0.4s;
+}
+
+.main-header button:hover {
+    background-color: var(--clr-white);
+    color: var(--clr-HTxt);
+    cursor: pointer;
+}

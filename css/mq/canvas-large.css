@@ -1,0 +1,25 @@
+@media(min-width:1200px) {
+    .grid {
+        grid-template-columns: repeat(3, 300px);
+
+    }
+
+    .content-filtering {
+        flex-direction: row;
+
+    }
+
+    .words-filtering {
+        justify-content: space-between;
+        margin-top: 1rem;
+    }
+
+    .main-layout {
+        max-width: 1100px;
+    }
+
+    .meme-board.flex {
+        flex-direction: row;
+    }
+
+}

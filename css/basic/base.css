@@ -1,0 +1,34 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+}
+
+
+.grid {
+    display: grid;
+    width: 100%;
+    height: auto;
+    gap: 2rem;
+    grid-auto-flow: row;
+}
+
+body {
+    background-image: var(--clr-BGC);
+    /* background-repeat: no-repeat; */
+    background-size:cover ;
+
+}
+
+.meme-board {
+    display: none;
+}
+
+.my-canvas {
+    outline: 5px solid var(--clr-trans);
+    border-radius: 1.875rem;
+    margin-bottom: 1.875rem;
+}
+

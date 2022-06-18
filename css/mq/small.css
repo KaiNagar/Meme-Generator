@@ -1,0 +1,31 @@
+@media (min-width:740px) {
+    .grid {
+        grid-template-columns: repeat(3, 200px);
+
+    }
+
+    .content-filtering {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .words-filtering {
+        justify-content: space-between;
+        margin-top: 1rem;
+    }
+
+    .main-layout {
+        max-width: 700px;
+    }
+    .main-content input.search-words {
+        min-width: 540px;
+    }
+    .meme-board {
+        display: none;
+    }
+    .menu-toggle{
+        display: none;
+    }
+
+
+}

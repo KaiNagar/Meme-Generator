@@ -1,0 +1,61 @@
+body.canvas-open .main-content {
+    background: none;
+}
+
+.main-content {
+    background-color: var(--clr-DGrey);
+    border-radius: 1rem;
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+    font-family: poppins-light;
+}
+
+.main-content input.search-words {
+    /* width: 540px; */
+    font-size: 1.3125rem;
+    padding: 0.9rem 0;
+    padding-inline-start: 3.125rem;
+    border-radius: 3rem;
+    color: var(--clr-white);
+    background-color: var(--clr-input);
+    outline: 0;
+    border: 0;
+}
+
+.main-content button.more-keywords-btn {
+    font-size: 1.125rem;
+    background-image: var(--clr-main);
+    border-radius: 2rem;
+    padding: 0 1.6rem;
+    height: 2.25rem;
+    border: 0;
+    align-self: end;
+    color: var(--clr-white);
+    transition: all 0.4s;
+}
+
+.main-content button.more-keywords-btn:hover {
+    color: var(--clr-HTxt);
+    background-image: var(--clr-white);
+    cursor: pointer;
+    line-height: 1.31875;
+}
+
+.main-content .keywords>*:not(:last-child) {
+    margin-inline-end: 0.625rem;
+}
+
+.main-content .keywords {
+    background-color: var(--clr-LGrey);
+    color: var(--clr-white);
+    border-radius: 2rem;
+    padding: 0 2.375rem;
+}
+
+.main-content .keywords span:hover {
+    cursor: pointer;
+}
+
+.content-filtering {
+    padding: 1.5625rem 0.81251rem 2.8125rem;
+}

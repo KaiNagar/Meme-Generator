@@ -1,0 +1,33 @@
+.control-panel .line-txt {
+    font-family: poppins-medium;
+    font-size: 1.5625rem;
+
+}
+
+.control-panel .line-txt {
+    padding: 6.5px 0;
+    border-radius: 2rem;
+    border: 0;
+    background-color: var(--clr-LWhite);
+    font-family: poppins-medium;
+    text-align: center;
+    margin-top: 1.5rem;
+    box-shadow: 0.26px 4.99px var(--clr-inputShadow), inset 0 5px var(--clr-white);
+}
+
+.control-panel .line-txt:hover {
+    box-shadow: inset 0.26px 4.99px var(--clr-inputShadow), 0 5px var(--clr-white);
+}
+
+.control-panel .line-txt:focus {
+    outline: none;
+}
+
+.control-panel {
+    background-color: var(--clr-trans);
+    margin-inline-start: 5.625rem;
+    border-radius: 1rem;
+    margin-bottom: 1.875rem;
+    padding: 0 2.5125rem;
+    max-width: 525px;
+}

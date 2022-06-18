@@ -1,0 +1,14 @@
+@media(min-width:1750px) {
+    .grid {
+        grid-template-columns: repeat(5, 300px);
+
+    }
+
+    .main-layout {
+        max-width: 1700px;
+    }
+
+    .nav-layout {
+        max-width: 600px;
+    }
+}

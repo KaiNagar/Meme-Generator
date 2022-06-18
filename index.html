@@ -10,9 +10,12 @@
 </head>
 
 <body class="body" onload="init()">
+
+    <div class="main-screen" onclick="toggleMenu()"></div>
+
     <header class="main-header">
         <div class="header flex align-center space-between main-layout margin-auto">
-            <h1 class="main-logo">Logo</h1>
+            <h1 class="main-logo">LOGO</h1>
             <div class="main-nav flex nav-layout space-between">
 
                 <ul class="clean-list flex">
@@ -20,14 +23,14 @@
                     <li><button>About</button></li>
                     <li><button onclick="setView(this.innerText)">Memes</button></li>
                 </ul>
-
+                <button onclick="toggleMenu()" class="menu-toggle">☰</button>
             </div>
         </div>
     </header>
 
 
 
-    <main class="main-content">
+    <main class="main-content ">
 
         <!-- <input type="file" value="user-img" class="file-input btn" name="image" onchange="onImgInput(event)" /> -->
 
@@ -43,15 +46,15 @@
             <div class="content-filtering flex space-between">
                 <input oninput="onSetFilterBy(this.value)" class="search-words" id="search-keywords"
                     list="search-keywords" type="text" placeholder="Search">
+                    <!-- <button onclick="onMakeRngMeme()" class="more-keywords-btn margin-auto">I'm Flexible</button> -->
                 <div class="words-filtering flex">
-                    <!-- <button onclick="onMakeRngMeme()" class="more-keywords-btn">I'm Flexible</button> -->
                     <div class="keywords flex align-center">
-                        <span onclick="onSetFilterBy(this)" style="font-size:25px;">Funny</span>
-                        <span onclick="onSetFilterBy(this)" style="font-size:13px;">Cat</span>
-                        <span onclick="onSetFilterBy(this)" style="font-size:20px;">Men</span>
-                        <span onclick="onSetFilterBy(this)" style="font-size:25px;">Dog</span>
-                        <span onclick="onSetFilterBy(this)" style="font-size:15px;">Comic</span>
-                        <span onclick="onSetFilterBy(this)" style="font-size:35px;">Cute</span>
+                        <span onclick="onSetFilterBy(this)" style="font-size:1.5625rem;">Funny</span>
+                        <span onclick="onSetFilterBy(this)" style="font-size:0.8125rem;">Cat</span>
+                        <span onclick="onSetFilterBy(this)" style="font-size:1.25rem;">Men</span>
+                        <span onclick="onSetFilterBy(this)" style="font-size:1.5625rem;">Dog</span>
+                        <span onclick="onSetFilterBy(this)" style="font-size:0.9375rem;">Comic</span>
+                        <span onclick="onSetFilterBy(this)" style="font-size:2.1875rem;">Cute</span>
                     </div>
                     <button class="more-keywords-btn">More</button>
                 </div>
@@ -152,7 +155,14 @@
 
 
 
-
+<script>
+     function toggleMenu() {
+            document.body.classList.toggle('menu-open');
+            var menuBtn = document.querySelector('.menu-toggle');
+            if (menuBtn.innerText === '☰') menuBtn.innerText = '✖'
+            else if (menuBtn.innerText === '✖') menuBtn.innerText = '☰'
+        }
+</script>
 
     <script defer src="js/main.js"></script>
     <script defer src="js/controllers/gallery-controller.js"></script>
