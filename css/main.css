@@ -27,3 +27,15 @@
 /* not happy with this sort or responsive design
 dont know if you even check this page lol 
 but this is the best i could do with my situation in the moment of time*/
+
+.file-input{
+font-size: 1rem;
+margin-top: 0.5rem;
+margin-inline-start: 1rem;
+color: var(--clr-download);
+}
+
+.file-input-label{
+    color: var(--clr-download);
+    font-size: 2rem;
+}

@@ -32,6 +32,11 @@ body.canvas-open .main-content {
     align-self: end;
     color: var(--clr-white);
     transition: all 0.4s;
+    align-self: center;
+}
+
+.main-content button.more-keywords-btn:first-child{
+    margin-bottom: 1rem;
 }
 
 .main-content button.more-keywords-btn:hover {

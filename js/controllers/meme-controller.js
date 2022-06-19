@@ -6,15 +6,18 @@ var gIsUserImg = false
 //the big mama function doing all the hard work 
 //details inside
 function renderMeme() {
+    // if clicked for a random meme
+    //getting the random created meme and rendering it 
     if (gIsRNG) {
         var meme = makeRngMeme()
+        setGMeme(meme)
+        gIsRNG = false
     }
     else {
         var meme = getMeme()
     }
 
-    var memeImg = gImgs.find(img => img.id === meme.selectedId)
-
+var memeImg = gImgs.find(img => img.id === meme.selectedId)
     //creating new img html and drawing it onto the canvas
     var img = new Image()
     img.src = memeImg.url
@@ -181,7 +184,7 @@ function onMoveLine(direction) {
 }
 
 //creating a new meme totally randomized
-//kinda broken for now
+//kinda broken for now #fixed it!!
 function onMakeRngMeme() {
     gIsRNG = true
     const elSearch = document.querySelector('.content-filtering')
@@ -201,22 +204,28 @@ function onAddSticker(sticker) {
     renderMeme()
 }
 
+
+
+
 //showing more keywords
 function onMoreKeywords(word) {
     const elWords = document.querySelector('.words-filtering')
     if (word === 'More') {
         elWords.classList.add('column')
         elWords.innerHTML =
-            `<button onclick="onMoreKeywords(this.innerText)" class="more-keywords-btn">Less</button>
-            <div class="keywords flex align-center" style="border-bottom-left-radius:0 ;
-            border-bottom-right-radius:0 ;">
-                <span onclick="onSetFilterBy(this)" style="font-size:1.5625rem;">Funny</span>
-                <span onclick="onSetFilterBy(this)" style="font-size:0.8125rem;">Cat</span>
-                <span onclick="onSetFilterBy(this)" style="font-size:1.25rem;">Men</span>
-                <span onclick="onSetFilterBy(this)" style="font-size:1.5625rem;">Dog</span>
-                <span onclick="onSetFilterBy(this)" style="font-size:0.9375rem;">Comic</span>
-                <span onclick="onSetFilterBy(this)" style="font-size:2.1875rem;">Cute</span>
-            </div>
+            `<div class="main-btns flex column">
+            <button onclick="onMakeRngMeme()" class="more-keywords-btn margin-auto">I'm Flexible</button>
+            <button onclick="onMoreKeywords(this.innerText)" class="more-keywords-btn">Less</button>
+        </div>
+        <div class="keywords flex align-center" style="border-bottom-left-radius:0 ;
+        border-bottom-right-radius:0 ;">
+            <span onclick="onSetFilterBy(this)" style="font-size:1.5625rem;">Funny</span>
+            <span onclick="onSetFilterBy(this)" style="font-size:0.8125rem;">Cat</span>
+            <span onclick="onSetFilterBy(this)" style="font-size:1.25rem;">Men</span>
+            <span onclick="onSetFilterBy(this)" style="font-size:1.5625rem;">Dog</span>
+            <span onclick="onSetFilterBy(this)" style="font-size:0.9375rem;">Comic</span>
+            <span onclick="onSetFilterBy(this)" style="font-size:2.1875rem;">Cute</span>
+        </div>
             <div class="keywords flex align-center" style="border-radius:0;   ">
         <span onclick="onSetFilterBy(this)" style="font-size:1.5625rem;">Funny</span>
         <span onclick="onSetFilterBy(this)" style="font-size:0.8125rem;">Cat</span>
@@ -236,15 +245,19 @@ function onMoreKeywords(word) {
     </div>`
     } else {
         elWords.classList.remove('column')
-        elWords.innerHTML = `<button onclick="onMoreKeywords(this.innerText)" class="more-keywords-btn">More</button>
-        <div class="keywords flex align-center">
-            <span onclick="onSetFilterBy(this)" style="font-size:1.5625rem;">Funny</span>
-            <span onclick="onSetFilterBy(this)" style="font-size:0.8125rem;">Cat</span>
-            <span onclick="onSetFilterBy(this)" style="font-size:1.25rem;">Men</span>
-            <span onclick="onSetFilterBy(this)" style="font-size:1.5625rem;">Dog</span>
-            <span onclick="onSetFilterBy(this)" style="font-size:0.9375rem;">Comic</span>
-            <span onclick="onSetFilterBy(this)" style="font-size:2.1875rem;">Cute</span>
-        </div>`
+        elWords.innerHTML = `
+        <div class="main-btns flex column">
+        <button onclick="onMakeRngMeme()" class="more-keywords-btn margin-auto">I'm Flexible</button>
+        <button onclick="onMoreKeywords(this.innerText)" class="more-keywords-btn">More</button>
+    </div>
+    <div class="keywords flex align-center">
+        <span onclick="onSetFilterBy(this)" style="font-size:1.5625rem;">Funny</span>
+        <span onclick="onSetFilterBy(this)" style="font-size:0.8125rem;">Cat</span>
+        <span onclick="onSetFilterBy(this)" style="font-size:1.25rem;">Men</span>
+        <span onclick="onSetFilterBy(this)" style="font-size:1.5625rem;">Dog</span>
+        <span onclick="onSetFilterBy(this)" style="font-size:0.9375rem;">Comic</span>
+        <span onclick="onSetFilterBy(this)" style="font-size:2.1875rem;">Cute</span>
+    </div>`
     }
 }
 

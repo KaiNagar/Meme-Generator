@@ -32,7 +32,6 @@
 
     <main class="main-content ">
 
-        <!-- <input type="file" value="user-img" class="file-input btn" name="image" onchange="onImgInput(event)" /> -->
 
         <datalist id="search-keywords">
             <option value="Funny"></option>
@@ -43,12 +42,17 @@
             <option value="Cute"></option>
         </datalist>
         <div class="content main-layout margin-auto">
+            <label class="file-input-label" for="image-user">Upload Your Own Image:</label>
+            <input type="file" value="user-img" class="file-input btn" name="image-user" onchange="onImgInput(event)" />
+            
             <div class="content-filtering flex space-between">
                 <input oninput="onSetFilterBy(this.value)" class="search-words" id="search-keywords"
-                    list="search-keywords" type="text" placeholder="Search">
-                    <!-- <button onclick="onMakeRngMeme()" class="more-keywords-btn margin-auto">I'm Flexible</button> -->
+                list="search-keywords" type="text" placeholder="Search">
                 <div class="words-filtering flex ">
-                    <button onclick="onMoreKeywords(this.innerText)" class="more-keywords-btn">More</button>
+                    <div class="main-btns flex column">
+                        <button onclick="onMakeRngMeme()" class="more-keywords-btn margin-auto">I'm Flexible</button>
+                        <button onclick="onMoreKeywords(this.innerText)" class="more-keywords-btn">More</button>
+                    </div>
                     <div class="keywords flex align-center">
                         <span onclick="onSetFilterBy(this)" style="font-size:1.5625rem;">Funny</span>
                         <span onclick="onSetFilterBy(this)" style="font-size:0.8125rem;">Cat</span>
@@ -156,14 +160,14 @@
 
 
 
-<script>
-     function toggleMenu() {
+    <script>
+        function toggleMenu() {
             document.body.classList.toggle('menu-open');
             var menuBtn = document.querySelector('.menu-toggle');
             if (menuBtn.innerText === '☰') menuBtn.innerText = '✖'
             else if (menuBtn.innerText === '✖') menuBtn.innerText = '☰'
         }
-</script>
+    </script>
 
     <script defer src="js/main.js"></script>
     <script defer src="js/controllers/gallery-controller.js"></script>

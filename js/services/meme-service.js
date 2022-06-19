@@ -58,11 +58,6 @@ function setImg(id) {
     var meme = getMeme()
     meme.selectedId = id
 }
-//using when user using an image dowsnt work right now
-function setUserImg(id) {
-    var meme = getMeme()
-    meme.selectedId = id
-}
 
 //reseting meme to default values
 function resetMeme() {
@@ -105,7 +100,7 @@ function getSavedMemes() {
 
 // setting gmeme
 function setGMeme(val) {
-    gMeme = val
+    gMeme.selectedId = val
 }
 
 // setting saved memes
@@ -284,11 +279,11 @@ function setRngLine() {
 //when user upload a photo to canvas doesnt work right now
 function onImgInput(ev) {
     gIsUserImg = true
-    loadImageFromInput(ev, renderImg)
+    loadImageFromInput(ev,renderGallery)
 }
 
 //user image thingy
-function loadImageFromInput(ev, onImageReady) {
+function loadImageFromInput(ev,onImageReady) {
     var reader = new FileReader()
     reader.onload = function (event) {
         var url = event.target.result
@@ -296,25 +291,19 @@ function loadImageFromInput(ev, onImageReady) {
             id: imgNextIdx++,
             url: url
         }
-        setGMeme(newImg.id)
         setUserImg(newImg)
-        newImg.onload = onImageReady.bind(null, newImg)
+        newImg.onload = onImageReady()
+
     }
     reader.readAsDataURL(ev.target.files[0])
+    
 }
 //uer ia=mage thigny
 function setUserImg(img) {
-    gUserImg = img
-    renderMeme()
+    gImgs.unshift(img)
 }
-//user image thingy
-function getUserImg() {
-    return gUserImg
-}
-//user image thingy
-function renderImg(img) {
-    gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
-}
+
+
 
 //clearing the line selected box
 function clearSelectedLine() {
